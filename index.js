@@ -1,14 +1,18 @@
+//modules
 var readlineSync = require('readline-sync');
 const chalk = require('chalk');
 
+//intro
 var userName = readlineSync.question(chalk.yellow("Tell me your name "));
 console.log(chalk.bold.bgRgb(176, 45, 12)("Welcome "+ userName +" Let's Test Your knowledge about Cricket"));
 console.log(chalk.bold.grey("******************"));
 console.log(chalk.bold("Choose the Corerct Option:- "));
 console.log(chalk.bold.grey("******************"));
 
+//global variable
 var score = 0,highScore=7;
 
+//function for quiz
 function quiz(question, answer){
   var userAnswer = readlineSync.question(chalk.bold(question));
   if(userAnswer.toUpperCase()===answer.toUpperCase()){
@@ -22,6 +26,7 @@ console.log(chalk.bgRgb(158, 81, 181)("Current Score: "+score));
 console.log(chalk.bold.grey("******************"));
 }
 
+//array of questions
 var questions = [
   {
     question: `Which country have won maximum number of ICC cricket world cup trophy ?
@@ -97,11 +102,14 @@ var questions = [
   }  
 ];
 
+//loop for accessing questions from array
 for(var i=0; i<questions.length;i++){
   var currentQuestion = questions[i];
   quiz(currentQuestion.question,currentQuestion.answer);
 };
 
+
+//score and highscore details
 console.log(chalk.bold.grey("******************"));
 if(score>highScore){
   console.log(chalk.bold.bgRgb(37, 154, 156)("You have Scored "+score+'\n'+"Congratulations You Have Set A New HighScore Please Send A Screenshot to Me on my social accounts"));
